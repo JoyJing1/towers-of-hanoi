@@ -12,4 +12,4 @@ This version of the game leverages jQuery to handle player interactions.
 <img src="./images/screenshot.png"/>
 
 Developed by [Joy Jing][joy-jing]
-[joy-jing]: www.joyjing.com
+[joy-jing]: http://www.joyjing.com/
