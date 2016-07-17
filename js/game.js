@@ -49,7 +49,7 @@ Game.prototype.promptMove = function(reader, callback) {
 Game.prototype.run = function(reader, gameCompletionCallback) {
     this.promptMove(reader, (startTowerIdx, endTowerIdx) => {
       if (!this.move(startTowerIdx, endTowerIdx)) {
-        console.log("Invalid move!");
+        // console.log("Invalid move!");
       }
 
       if (!this.isWon()) {
@@ -57,7 +57,7 @@ Game.prototype.run = function(reader, gameCompletionCallback) {
         this.run(reader, gameCompletionCallback);
       } else {
         this.print();
-        console.log("You win!");
+        // console.log("You win!");
         gameCompletionCallback();
       }
     });

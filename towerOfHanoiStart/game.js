@@ -44,7 +44,7 @@ Game.prototype.promptMove = function(reader, callback) {
       const startTowerIdx = parseInt(start);
       reader.question("Enter an ending tower: ", end => {
         const endTowerIdx = parseInt(end);
-        callback(startTowerIdx, endTowerIdx)
+        callback(startTowerIdx, endTowerIdx);
       });
     });
 };
@@ -52,7 +52,7 @@ Game.prototype.promptMove = function(reader, callback) {
 Game.prototype.run = function(reader, gameCompletionCallback) {
     this.promptMove(reader, (startTowerIdx, endTowerIdx) => {
       if (!this.move(startTowerIdx, endTowerIdx)) {
-        console.log("Invalid move!");
+        // console.log("Invalid move!");
       }
 
       if (!this.isWon()) {
@@ -60,7 +60,7 @@ Game.prototype.run = function(reader, gameCompletionCallback) {
         this.run(reader, gameCompletionCallback);
       } else {
         this.print();
-        console.log("You win!");
+        // console.log("You win!");
         gameCompletionCallback();
       }
     });

@@ -47,9 +47,6 @@
 	const HanoiGame = __webpack_require__(1);
 	const HanoiView = __webpack_require__(2);
 	
-	console.log("We're in the main.js");
-	// console.log('second line');
-	
 	$( () => {
 	  const rootEl = $('.hanoi');
 	  const game = new HanoiGame();
@@ -63,7 +60,7 @@
 
 	function Game () {
 	  this.towers = [[3, 2, 1], [], []];
-	};
+	}
 	
 	Game.prototype.isValidMove = function(startTowerIdx, endTowerIdx) {
 	    const startTower = this.towers[startTowerIdx];
@@ -71,7 +68,7 @@
 	
 	    if (startTower.length === 0) {
 	      return false;
-	    } else if (endTower.length == 0) {
+	    } else if (endTower.length === 0) {
 	      return true;
 	    } else {
 	      const topStartDisc = startTower[startTower.length - 1];
@@ -82,9 +79,8 @@
 	
 	Game.prototype.isWon = function(){
 	    // move all the discs to the last or second tower
-	    return (this.towers[2].length == 3) || (this.towers[1].length == 3);
+	    return (this.towers[2].length === 3) || (this.towers[1].length === 3);
 	};
-	
 	
 	Game.prototype.move = function(startTowerIdx, endTowerIdx) {
 	    if (this.isValidMove(startTowerIdx, endTowerIdx)) {
@@ -95,11 +91,9 @@
 	    }
 	};
 	
-	
 	Game.prototype.print = function(){
 	    console.log(JSON.stringify(this.towers));
 	};
-	
 	
 	Game.prototype.promptMove = function(reader, callback) {
 	    this.print();
@@ -107,7 +101,7 @@
 	      const startTowerIdx = parseInt(start);
 	      reader.question("Enter an ending tower: ", end => {
 	        const endTowerIdx = parseInt(end);
-	        callback(startTowerIdx, endTowerIdx)
+	        callback(startTowerIdx, endTowerIdx);
 	      });
 	    });
 	};
@@ -115,7 +109,7 @@
 	Game.prototype.run = function(reader, gameCompletionCallback) {
 	    this.promptMove(reader, (startTowerIdx, endTowerIdx) => {
 	      if (!this.move(startTowerIdx, endTowerIdx)) {
-	        console.log("Invalid move!");
+	        // console.log("Invalid move!");
 	      }
 	
 	      if (!this.isWon()) {
@@ -123,7 +117,7 @@
 	        this.run(reader, gameCompletionCallback);
 	      } else {
 	        this.print();
-	        console.log("You win!");
+	        // console.log("You win!");
 	        gameCompletionCallback();
 	      }
 	    });
@@ -165,7 +159,6 @@
 	HanoiView.prototype.clickTower = function(event) {
 	  const $tower = $(event.currentTarget);
 	  let pos = $tower.data("pos");
-	  console.log(typeof this.clickedTower);
 	
 	  if (typeof this.clickedTower !== "undefined") {
 	    if (!this.game.isValidMove(this.clickedTower.data("pos"), pos)) {

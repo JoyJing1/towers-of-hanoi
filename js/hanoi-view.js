@@ -27,7 +27,6 @@ HanoiView.prototype.render = function () {
 HanoiView.prototype.clickTower = function(event) {
   const $tower = $(event.currentTarget);
   let pos = $tower.data("pos");
-  console.log(typeof this.clickedTower);
 
   if (typeof this.clickedTower !== "undefined") {
     if (!this.game.isValidMove(this.clickedTower.data("pos"), pos)) {
